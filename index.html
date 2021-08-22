@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeatmaniaIIDX CS クリアランプマネージャ</title>
+    <!-- Vue.jsとaxiosとBulmaを入れる -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <div id="header">
+        <header-component></header-component>
+    </div>
+
+    <section class="section">
+        <div class="container"">
+            <div class="buttons" id="change_version_button">
+                <button class="button" v-for="(version, index) in versions" v-on:click="changeVersion(index + 3)">
+                    {{version}}
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container" id="songlist">
+            <h1 class="title">{{getVersion()}}th</h1>
+            <h2 class="subtitle">全{{Object.keys(songs).length}}曲</h2>
+            <!-- ↑ 連想配列の長さはこうやってとる ↑ -->
+
+            <table class="table is-striped is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>Genre</th>
+                        <th>Song</th>
+                        <th>Artist</th>
+                        <th>SPN</th>
+                        <th>SPH</th>
+                        <th>SPA</th>
+                        <!-- 最初 → 使ってたけどやめた https://favril.hatenablog.com/entry/20100416/1271413046 -->
+                        <!-- 下のように指定すればプロパティの不存在絡みのWarnは出ない -->
+                        <th v-if="getVersion() == 15 || getVersion() == 16">SP黒A</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="song in songs">
+                        <td>{{song.Genre}}</td>
+                        <td>{{song.Song}}</td>
+                        <td>{{song.Artist}}</td>
+                        <td>
+                            {{song.SPN}}
+                            <selecter v-if="song.SPN != '-'"></selecter>
+                        </td>
+                        <td>
+                            {{song.SPH}}
+                            <selecter v-if="song.SPH != '-'"></selecter>
+                        </td>
+                        <td>
+                            {{song.SPA}}
+                            <selecter v-if="song.SPA != '-'"></selecter>
+                        </td>
+                        <td v-if="getVersion() == 15 || getVersion() == 16">
+                            {{song.SP黒A}}
+                            <selecter v-if="song.SP黒A != '-'"></selecter>
+                        </td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+    </section>
+
+    <div id="footer">
+        <footer-component></footer-component>
+    </div>
+
+    <script src="./components/header.js"></script>
+    <script src="./components/footer.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>

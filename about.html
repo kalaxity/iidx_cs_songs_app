@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About / BeatmaniaIIDX CS クリアランプマネージャ</title>
+    <!-- Vue.jsとaxiosとBulmaを入れる -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <div id="header">
+        <header-component></header-component>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="title">About</h1>
+            <h2 class="subtitle">このサイトについて</h2>
+            <p>
+                Vue.jsとスクレイピングの学習を目的として作成したサイトです。
+            </p>
+            <p>
+                楽曲データは9thを<a href="https://iidxsd.sift-swift.net/view/cs/9/all">IIDX Smart Data様</a>から、
+                それ以外(3rd~16th)を<a href="https://remywiki.com/CS_General_Info">RemyWiki様</a>から拝借して使用しています。
+            </p>
+            <p>
+                11th以前のAnotherについては、難易度を表記せず、存在する譜面を✓で表すに留めています。
+                これは、10thまではAnother譜面の難易度が設定されていなかったためです。
+            </p>
+        </div>
+    </section>
+
+    <div id="footer">
+        <footer-component></footer-component>
+    </div>
+
+    <script src="./components/header.js"></script>
+    <script src="./components/footer.js"></script>
+</body>
+</html>
