@@ -7,6 +7,24 @@ Vue.component("header-component", {
                             </h1>
                         </div>
                     </div>
+                    <div class="hero-foot">
+                        <nav class="tabs is-boxed is-fullwidth">
+                            <div class="container">
+                                <ul>
+                                    <li>
+                                        <a href="./index.html" class="navbar-item">
+                                            Home
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="./about.html" class="navbar-item">
+                                            About
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
                 </section>`
 });
 
