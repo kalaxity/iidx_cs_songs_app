@@ -54,10 +54,10 @@ var change_version_btn = new Vue({
     }
 });
 
-window.onload = function () {
-    if (document.cookie.split(';').some((item) => item.includes('cookie=YES'))) {
-        return;
-    }
-    alert("このサイトではCookieを利用しています");
-    document.cookie = 'cookie=YES';
-};
+// window.onload = function () {
+//     if (document.cookie.split(';').some((item) => item.includes('cookie=YES'))) {
+//         return;
+//     }
+//     alert("このサイトではCookieを利用しています");
+//     document.cookie = 'cookie=YES';
+// };
