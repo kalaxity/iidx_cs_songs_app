@@ -31,7 +31,7 @@
             <h2 class="subtitle">全{{ Object.keys(songs).length }}曲</h2>
             <!-- ↑ 連想配列の長さはこうやってとる ↑ -->
 
-            <table class="table is-striped is-fullwidth">
+            <table class="table is-striped is-fullwidth" id="table">
                 <thead>
                     <tr>
                         <th>Genre</th>
@@ -52,19 +52,19 @@
                         <td>{{ song.Artist }}</td>
                         <td>
                             {{ song.SPN }}
-                            <selecter v-if="song.SPN != '-'" v-bind:songname="song.Song" lampname="N"></selecter>
+                            <selecter v-if="song.SPN != '-'" v-bind:songname="song.Song" diff="N"></selecter>
                         </td>
                         <td>
                             {{ song.SPH }}
-                            <selecter v-if="song.SPH != '-'" v-bind:songname="song.Song" lampname="H"></selecter>
+                            <selecter v-if="song.SPH != '-'" v-bind:songname="song.Song" diff="H"></selecter>
                         </td>
                         <td>
                             {{ song.SPA }}
-                            <selecter v-if="song.SPA != '-'" v-bind:songname="song.Song" lampname="A"></selecter>
+                            <selecter v-if="song.SPA != '-'" v-bind:songname="song.Song" diff="A"></selecter>
                         </td>
                         <td v-if="getVersion() == 15 || getVersion() == 16">
                             {{ song.SP黒A }}
-                            <selecter v-if="song.SP黒A != '-'" v-bind:songname="song.Song" lampname="BA"></selecter>
+                            <selecter v-if="song.SP黒A != '-'" v-bind:songname="song.Song" diff="BA"></selecter>
                         </td>
                     </tr>
                 </tbody>
