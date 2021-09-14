@@ -16,10 +16,10 @@
     </div>
 
     <section class="section">
-        <div class="container"">
+        <div class="container">
             <div class="buttons" id="change_version_button">
                 <button class="button" v-for="(version, index) in versions" v-on:click="changeVersion(index + 3)">
-                    {{version}}
+                    {{ version }}
                 </button>
             </div>
         </div>
@@ -27,8 +27,8 @@
 
     <section class="section">
         <div class="container" id="songlist">
-            <h1 class="title">{{getVersion()}}th</h1>
-            <h2 class="subtitle">全{{Object.keys(songs).length}}曲</h2>
+            <h1 class="title">{{ getVersion() }}th</h1>
+            <h2 class="subtitle">全{{ Object.keys(songs).length }}曲</h2>
             <!-- ↑ 連想配列の長さはこうやってとる ↑ -->
 
             <table class="table is-striped is-fullwidth">
@@ -41,34 +41,33 @@
                         <th>SPH</th>
                         <th>SPA</th>
                         <!-- 最初 → 使ってたけどやめた https://favril.hatenablog.com/entry/20100416/1271413046 -->
-                        <!-- 下のように指定すればプロパティの不存在絡みのWarnは出ない -->
+                        <!-- 下のように指定すればプロパティの不存在絡みのWarningは出ない -->
                         <th v-if="getVersion() == 15 || getVersion() == 16">SP黒A</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="song in songs">
-                        <td>{{song.Genre}}</td>
-                        <td>{{song.Song}}</td>
-                        <td>{{song.Artist}}</td>
+                    <tr v-for="(song, index) in songs">
+                        <td>{{ song.Genre }}</td>
+                        <td>{{ song.Song }}</td>
+                        <td>{{ song.Artist }}</td>
                         <td>
-                            {{song.SPN}}
-                            <selecter v-if="song.SPN != '-'"></selecter>
+                            {{ song.SPN }}
+                            <selecter v-if="song.SPN != '-'" v-bind:songname="song.Song" lampname="N"></selecter>
                         </td>
                         <td>
-                            {{song.SPH}}
-                            <selecter v-if="song.SPH != '-'"></selecter>
+                            {{ song.SPH }}
+                            <selecter v-if="song.SPH != '-'" v-bind:songname="song.Song" lampname="H"></selecter>
                         </td>
                         <td>
-                            {{song.SPA}}
-                            <selecter v-if="song.SPA != '-'"></selecter>
+                            {{ song.SPA }}
+                            <selecter v-if="song.SPA != '-'" v-bind:songname="song.Song" lampname="A"></selecter>
                         </td>
                         <td v-if="getVersion() == 15 || getVersion() == 16">
-                            {{song.SP黒A}}
-                            <selecter v-if="song.SP黒A != '-'"></selecter>
+                            {{ song.SP黒A }}
+                            <selecter v-if="song.SP黒A != '-'" v-bind:songname="song.Song" lampname="BA"></selecter>
                         </td>
                     </tr>
                 </tbody>
-                
             </table>
         </div>
     </section>
