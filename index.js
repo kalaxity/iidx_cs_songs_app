@@ -1,8 +1,10 @@
+// JSON = ['Genre', 'Song', 'Artist', 'BPM', 'SPB', 'SPN', 'SPH', 'SPA',
+//         'SP黒A', 'DPN', 'DPH', 'DPA', 'DP黒A']
+
 /**
  * @type {Storage}
  */
  let db = localStorage
-
 
  /**
   * ランプデータをDBから取得 なければ新規作成
@@ -18,8 +20,7 @@
      }
      return parseInt(lamp);
  }
- 
- 
+
  /**
   * DBにランプを追加
   * @param {String} songName 曲名
@@ -31,8 +32,7 @@
  }
  
 
-// JSON = ['Genre', 'Song', 'Artist', 'BPM', 'SPB', 'SPN', 'SPH', 'SPA',
-//         'SP黒A', 'DPN', 'DPH', 'DPA', 'DP黒A']
+// ====== Vue関係 =====
 
 let selector = Vue.component('selecter', {
     //replace: false,
@@ -42,13 +42,11 @@ let selector = Vue.component('selecter', {
             addLamp(this.songname, this.diff, event.target.selectedIndex);
         },
         loadListener: function() {
-            //console.log(this.$el.options.selectedIndex);
             this.$el.options[getLamp(this.songname, this.diff)].selected = true;
-            console.log(this.$el.options.selectedIndex);
+            // console.log(this.$el.options.selectedIndex);
         }
     },
     mounted() {
-        console.log(this.songname);
         this.loadListener();
     },
     watch: {
@@ -65,6 +63,7 @@ let selector = Vue.component('selecter', {
                     <option value="5">F</option>
                 </select>`
 });
+
 
 let app = new Vue({
     el: '#songlist',
@@ -92,6 +91,7 @@ let app = new Vue({
     }
 });
 
+
 let change_version_btn = new Vue({
     el: '#change_version_button',
     data: {
@@ -101,12 +101,8 @@ let change_version_btn = new Vue({
     },
     methods: {
         changeVersion(ver) {
-            //document.getElementById("table").innerHTML = "";
-            //selector.$destroy();
             app.setVersion(ver);
             app.getJsonData();
-            //app.$forceUpdate();
-            //selector.loadListener();
         }
     }
 });
